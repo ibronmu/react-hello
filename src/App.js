@@ -1,40 +1,40 @@
-
-//import Navbar from './components/navbar';
-//import Home from './components/home';
- //import Greet from './components/greeting';
-//import BlogList from './components/blogs';
-//import {useState} from 'react';
-//import { useEffect } from 'react';
-import Counter from './components/counter';
-
+import Counter from "./components/counter";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Navbar from "./components/navbar";
+import Home from "./components/home";
+import BlogDetails from "./blogDetails";
+import Create from "./components/create";
+import NotFound from "./notFound";
 function App() {
-
-//const [blogs,setBlogs] = useState([
   
-  //{title: 'my new website', body:'to ga ni nan', author:'naja',id:1},
-  //{title: 'my new girl', body:'to ga ta nan', author:'saminu',id:2},
-  //{title: 'my family', body:'ai ga su nan', author:'rufa',id:3}
-
-//]);
-//const handleDelete = (id)=>{
- //const newBlogs = blogs.filter((blog)=> blog.id !== id)
- //setBlogs(newBlogs)
-//}
-//const callName = (name)=>{
- // alert(name)
-//}
-//useEffect(()=>{
- // console.log(blogs)
-//},[])
   return (
-    <div className="App">
-      
-        
-        
-      <Counter></Counter>
-      </div>
+   <Router>
 
+<div className="App">
+    <div>
+    <Navbar/>
     
+    
+    <Switch>
+    <Route exact path="/" ><Home></Home></Route>
+      <Route path="/Counter"><Counter></Counter></Route>
+      
+      <Route path="/blogs/:id">
+         <BlogDetails/>
+      </Route>
+      <Route path="/create">
+<Create/>
+  </Route>
+  <Route path="*" >
+    <NotFound/>
+  </Route>
+    </Switch>
+    </div>  
+    
+    </div>
+   </Router>
+   
+   
   );
 }
 
